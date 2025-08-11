@@ -1,0 +1,100 @@
+.loginWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 1rem;
+    background: linear-gradient(135deg, #f5f3e7, #b497d6);
+  }
+  
+  /* Keep it scoped so navbar .container isn't touched */
+  .loginWrapper .container {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 3rem 2.5rem;
+    height: 500px;
+    width: 100%;
+    max-width: 500px; /* Bigger than before */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    color: #f5f3e7;
+    animation: fadeIn 0.8s ease;
+  }
+  
+  .loginWrapper .container h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    font-size: 2rem;
+    letter-spacing: 0.5px;
+    color: black;
+  }
+  
+  .loginWrapper .container input {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.12);
+    color: black;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+  
+  .loginWrapper .container input:focus {
+    border-color: #6c63ff;
+    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.3);
+  }
+  
+  .loginWrapper .container .buttonRow {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .loginWrapper .container .button {
+    flex: 1;
+    padding: 0.9rem;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 40px;
+    background: linear-gradient(90deg, #6c63ff, #4e44ce);
+    color: black;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.3s ease;
+  }
+  
+  .loginWrapper .container .button:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(90deg, #4e44ce, #6c63ff);
+  }
+  
+  .loginWrapper .container .secondaryButton {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .loginWrapper .container .form-footer {
+    text-align: center;
+    margin-top: 1.2rem;
+    font-size: 0.85rem;
+    color: #f5f3e7;
+  }
+  
+  .loginWrapper .container .form-footer a {
+    color: #f5f3e7;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .loginWrapper .container .form-footer a:hover {
+    color: #4e44ce;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+

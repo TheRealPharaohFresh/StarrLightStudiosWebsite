@@ -1,0 +1,11 @@
+body {
+    background-color: #b497d6;
+    color: #333; /* Dark text for contrast */
+    font-family: "Playfair Display", serif; /* Elegant serif font */
+  }
+
+  .full-width-container {
+    width: 100%;
+    overflow: hidden;
+  }
+  

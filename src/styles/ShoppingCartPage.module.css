@@ -1,0 +1,141 @@
+/* Container styling */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Heading */
+  .container h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #222;
+  }
+  
+  /* Total items text */
+  .container p {
+    text-align: center;
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Cart list */
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: #fafafa;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  
+  /* Product image */
+  .image {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #eee;
+  }
+  
+  /* Product details */
+  li h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  li p {
+    margin: 0.3rem 0;
+    font-size: 0.95rem;
+    color: #555;
+  }
+  
+  /* Price styling */
+  li p:nth-of-type(2) {
+    font-weight: 600;
+    color: #222;
+  }
+  
+  /* Buttons */
+  .button {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    margin-top: 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+  }
+  
+  .button:hover {
+    background-color: #1d4ed8;
+  }
+  
+  li button {
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background-color 0.2s ease;
+  }
+  
+  li button:hover {
+    background-color: #dc2626;
+  }
+  
+  /* Total price styling */
+  h3 {
+    text-align: right;
+    margin-top: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #222;
+  }
+  
+  /* Responsive tweaks */
+  @media (max-width: 768px) {
+    li {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .image {
+      width: 80px;
+      height: 80px;
+    }
+  
+    .button {
+      width: 100%;
+    }
+  }
+  

@@ -1,0 +1,79 @@
+/* Background with a smooth luxury gradient */
+body {
+  background: linear-gradient(to left, #f9f7f2, #cbbbe8);
+  margin: 0;
+  padding: 0;
+  font-family: 'Libre Baskerville', serif;
+  color: #2d2d2d;;
+}
+
+/* Card styling */
+.custom-card {
+  background-color: #f0edf6; /* soft luxury lavender */
+  border: none;
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  overflow: hidden;
+  min-height: 80;
+}
+
+/* Card hover for premium feel */
+.custom-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Card image with consistent sizing and no distortion */
+.custom-card img {
+  object-fit:0px cover;
+  height: 300px;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Card title */
+.custom-card .card-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+  color: #2d1b4e;
+}
+
+/* Description list */
+.custom-card ol {
+  padding-left: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.custom-card li {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 0.4rem;
+}
+
+/* Price text */
+.custom-card .card-text {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  color: #3c2b57;
+}
+
+/* Lavender luxury button */
+.btn-lavender {
+  background: linear-gradient(135deg, #cfa7cf, #b58eb5);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.5rem 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.btn-lavender:hover {
+  background: linear-gradient(135deg, #b68bb6, #9d739d);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
