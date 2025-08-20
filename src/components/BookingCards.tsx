@@ -21,7 +21,7 @@ const BookingCard: React.FC<BookingCardProps> = ({ id, title, description, price
     return (
         <Card
             className={styles["custom-card"]}
-            style={{ height: "1000px", transition: "all 0.3s ease-in-out" }}
+            style={{ height: "1050px", transition: "all 0.3s ease-in-out" }}
             onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "scale(1.05)";
                 e.currentTarget.style.boxShadow =

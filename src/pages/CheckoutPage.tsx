@@ -1,18 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../redux/cartSlice";
 import { useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { createOrder } from "../services/orderServices";
 import type { RootState } from "../redux/store";
-import styles from '../styles/CheckoutPage.module.css';// Assuming you saved the CSS as a module
+import styles from '../styles/CheckoutPage.module.css';
 
 const CheckoutPage: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const bookings = useSelector((state: RootState) => state.cart.items);
-
   const totalPrice = bookings.reduce((total, booking) => total + booking.price, 0);
+
+  // ✅ Add state for form fields
+  const [fullName, setFullName] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [stateProvince, setStateProvince] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   const handleConfirmBooking = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -33,6 +40,12 @@ const CheckoutPage: React.FC = () => {
         price: booking.price,
       })),
       totalPrice,
+      fullName,
+      address,
+      city,
+      stateProvince,
+      postalCode,
+      phoneNumber,
     };
 
     await createOrder(user.uid, orderData);
@@ -64,11 +77,63 @@ const CheckoutPage: React.FC = () => {
       <form className={styles.form} onSubmit={handleConfirmBooking}>
         <label>
           Full Name
-          <input type="text" placeholder="Enter your full name" required />
+          <input
+            type="text"
+            placeholder="Enter your full name"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+            required
+          />
         </label>
         <label>
           Address
-          <input type="text" placeholder="Enter your address" required />
+          <input
+            type="text"
+            placeholder="Enter your address"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            required
+          />
+        </label>
+        <label>
+          City
+          <input
+            type="text"
+            placeholder="City"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            required
+          />
+        </label>
+        <label>
+          State/Province
+          <input
+            type="text"
+            placeholder="State/Province"
+            value={stateProvince}
+            onChange={(e) => setStateProvince(e.target.value)}
+            required
+          />
+        </label>
+        <label>
+          Postal Code
+          <input
+            type="text"
+            placeholder="Postal Code"
+            value={postalCode}
+            onChange={(e) => setPostalCode(e.target.value)}
+            required
+          />
+        </label>
+        <label>
+          Phone Number
+          <input
+            type="tel"
+            placeholder="Enter Phone Number"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+            required
+          />
         </label>
         <button type="submit">Confirm Booking</button>
       </form>
@@ -77,3 +142,4 @@ const CheckoutPage: React.FC = () => {
 };
 
 export default CheckoutPage;
+

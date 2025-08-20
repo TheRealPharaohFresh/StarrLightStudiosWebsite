@@ -13,8 +13,9 @@
 
 
 .text-flicker-in-glow {
-	-webkit-animation: text-flicker-in-glow 4s linear both;
-	        animation: text-flicker-in-glow 4s linear both;
+    color: #fff; /* Ensure text is white */
+    -webkit-animation: text-flicker-in-glow 4s linear both;
+    animation: text-flicker-in-glow 4s linear both;
 }
 
 

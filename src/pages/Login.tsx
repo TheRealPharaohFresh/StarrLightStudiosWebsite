@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
+import { setDoc,doc, getDoc } from "firebase/firestore";
 import { auth, db } from "../config/firebaseConfig";
 import styles from "../styles/Login.module.css";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +11,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [name, setName] = useState(""); // Assuming you want to capture the user's name as well
 
   const navigate = useNavigate();
 
@@ -37,20 +38,34 @@ const Login = () => {
 
   const fetchUserData = async (userId: string) => {
     try {
-      const userDoc = await getDoc(doc(db, "users", userId));
+      const userDocRef = doc(db, "users", userId);
+      const userDoc = await getDoc(userDocRef);
+      
       if (!userDoc.exists()) {
-        console.log("No user data found!");
+        // Create the user document if it doesn't exist
+        await setDoc(userDocRef, {
+          name: name, // <-- store the full name here
+          email: email
+        });
       }
     } catch (error) {
       console.error("Error fetching user data:", error);
     }
   };
+  
 
   return (
     <div className={styles.loginWrapper}>
       <div className={styles.container}>
         <form onSubmit={handleLogin}>
           <h2>Login</h2>
+          <input
+            type="text"
+            placeholder="Full Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
           <input
             type="email"
             placeholder="Email"
