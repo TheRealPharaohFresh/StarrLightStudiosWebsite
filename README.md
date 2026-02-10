@@ -29,6 +29,8 @@ State persistence via sessionStorage
 
 Session survives refresh → your cart stays intact
 
+Cart opens as a right-side drawer from the navbar (with a link to the full `/cart` page).
+
 🌍 Navigation
 
 Built with React Router v6
@@ -73,7 +75,10 @@ src/
  ┃ ┣ 📜 CheckoutPage.tsx
  ┃ ┗ 📜 ShoppingCartPage.tsx
  ┣ 📂 components/
- ┃ ┗ 📜 Navbar.tsx
+ ┃ ┣ 📜 Navbar.tsx
+ ┃ ┗ 📜 CartDrawer.tsx          # Slide-in cart drawer (sidebar)
+ ┣ 📂 styles/
+ ┃ ┗ 📜 CartDrawer.module.css   # Drawer styles
  ┣ 📂 tests/
  ┃ ┣ 📂 pages/                 # Page tests
  ┃ ┣ 📂 components/            # Component tests

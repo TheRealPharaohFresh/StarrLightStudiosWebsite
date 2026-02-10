@@ -13,9 +13,17 @@ export const useCurrentUser = () => {
   const [user, setUser] = useState<CurrentUser | null>(null);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+    const safeAuth = auth;
+    const safeDb = db;
+
+    if (!safeAuth || !safeDb) {
+      setUser(null);
+      return;
+    }
+
+    const unsubscribe = onAuthStateChanged(safeAuth, async (firebaseUser) => {
       if (firebaseUser) {
-        const userDoc = await getDoc(doc(db, 'users', firebaseUser.uid));
+        const userDoc = await getDoc(doc(safeDb, 'users', firebaseUser.uid));
         if (userDoc.exists()) {
           setUser(userDoc.data() as CurrentUser);
         }

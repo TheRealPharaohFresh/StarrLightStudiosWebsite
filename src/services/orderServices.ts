@@ -2,6 +2,7 @@ import { db } from "../config/firebaseConfig";
 import { collection, addDoc, getDocs, query, where, serverTimestamp } from "firebase/firestore";
 
 export const createOrder = async (userId: string, orderData: any) => {
+  if (!db) throw new Error("Firebase is not configured (Firestore unavailable)");
   const docRef = await addDoc(collection(db, "orders"), {
     userId,
     ...orderData,
@@ -13,6 +14,7 @@ export const createOrder = async (userId: string, orderData: any) => {
 
 
 export const fetchOrdersByUser = async (userId: string) => {
+  if (!db) throw new Error("Firebase is not configured (Firestore unavailable)");
   const q = query(collection(db, "orders"), where("userId", "==", userId));
   const querySnapshot = await getDocs(q);
   return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));

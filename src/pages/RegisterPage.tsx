@@ -15,6 +15,12 @@ const RegisterPage = () => {
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      if (!auth || !db) {
+        throw new Error(
+          "Firebase is not configured. Set VITE_FIREBASE_* env vars to enable registration."
+        );
+      }
+
       const userCred = await createUserWithEmailAndPassword(auth, email, password);
       const uid = userCred.user.uid;
 

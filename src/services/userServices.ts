@@ -7,6 +7,8 @@ import { auth } from '../config/firebaseConfig';
 export const createUser = async (userId: string, userData: { name: string; email: string; age?: number }) => {
     if (!userId) throw new Error("User ID is required");
 
+    if (!db) throw new Error("Firebase is not configured (Firestore unavailable)");
+
    
     if (userData.age !== undefined && typeof userData.age !== 'number') {
         throw new Error("Age must be a valid number");
@@ -23,6 +25,8 @@ export const createUser = async (userId: string, userData: { name: string; email
 
 export const deleteUser = async (userId: string) => {
     if (!userId) throw new Error("User ID is required");
+
+    if (!db || !auth) throw new Error("Firebase is not configured (Auth/Firestore unavailable)");
 
     try {
         // Delete user from Firestore

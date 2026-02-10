@@ -1,7 +1,9 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAuth, type Auth } from "firebase/auth";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import type { FirebaseApp } from "firebase/app";
+import { getApp, getApps, initializeApp } from "firebase/app";
+import type { Auth } from "firebase/auth";
+import { getAuth } from "firebase/auth";
+import type { Firestore } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -19,26 +21,27 @@ const firebaseConfig = {
 
 export default firebaseConfig;
 
+const isNonEmptyString = (value: unknown): value is string =>
+  typeof value === "string" && value.trim().length > 0;
 
+const isFirebaseConfigured =
+  isNonEmptyString(firebaseConfig.apiKey) &&
+  isNonEmptyString(firebaseConfig.authDomain) &&
+  isNonEmptyString(firebaseConfig.projectId) &&
+  isNonEmptyString(firebaseConfig.appId);
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth: Auth = getAuth(app);
-const db = getFirestore(app);
+let app: FirebaseApp | undefined;
+let auth: Auth | null = null;
+let db: Firestore | null = null;
 
+if (isFirebaseConfigured) {
+  app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+  auth = getAuth(app);
+  db = getFirestore(app);
+} else {
+  console.warn(
+    "Firebase is not configured (missing VITE_FIREBASE_* env vars). Auth/Firestore features will be disabled until configured."
+  );
+}
 
-// Test Firestore connection
-const testFirestoreConnection = async () => {
-  try {
-    const bookingsCollection = collection(db, "bookings"); // Get the reference to your "products" collection
-    const snapshot = await getDocs(bookingsCollection); // Get the documents from the collection
-    console.log("Firestore connection successful, data fetched:", snapshot.size); // snapshot.size returns the number of documents
-  } catch (error) {
-    console.error("Firestore connection failed:", error);
-  }
-};
-
-// Run the test when Firebase initializes
-testFirestoreConnection();
-
-export { db, auth };
+export { app, auth, db, isFirebaseConfigured };

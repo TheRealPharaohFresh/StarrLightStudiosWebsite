@@ -21,6 +21,12 @@ const Login = () => {
     setError(null);
 
     try {
+      if (!auth || !db) {
+        throw new Error(
+          "Firebase is not configured. Set VITE_FIREBASE_* env vars to enable login."
+        );
+      }
+
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const firebaseUser = userCredential.user;
 
@@ -38,6 +44,7 @@ const Login = () => {
 
   const fetchUserData = async (userId: string) => {
     try {
+      if (!db) return;
       const userDocRef = doc(db, "users", userId);
       const userDoc = await getDoc(userDocRef);
       

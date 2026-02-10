@@ -3,6 +3,7 @@ import { db } from "../config/firebaseConfig";
 import type { User } from "firebase/auth";
 
 export const createUserIfNotExists = async (user: User) => {
+  if (!db) throw new Error("Firebase is not configured (Firestore unavailable)");
   const userRef = doc(db, "users", user.uid);
   const userSnap = await getDoc(userRef);
 

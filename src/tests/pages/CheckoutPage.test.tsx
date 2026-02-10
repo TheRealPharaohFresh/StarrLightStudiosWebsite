@@ -1,5 +1,10 @@
 import { screen } from "@testing-library/react";
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
+
+vi.mock("../../services/orderServices", () => ({
+  createOrder: vi.fn(),
+}));
+
 import CheckoutPage from "../../pages/CheckoutPage";
 import { renderWithProviders } from "../test-utils";
 
