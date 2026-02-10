@@ -2,10 +2,20 @@ import { configureStore } from "@reduxjs/toolkit";
 import cartReducer, { setCart } from "./cartSlice";
 import type { Booking } from "./cartSlice";
 
+const normalizeStoredCart = (items: Booking[]): Booking[] =>
+  items
+    .filter((item) => item && item.id)
+    .map((item) => ({
+      ...item,
+      id: String(item.id),
+      price: Number(item.price) || 0,
+    }));
+
 const loadCartFromSession = (): Booking[] => {
   try {
     const stored = sessionStorage.getItem("cart");
-    return stored ? JSON.parse(stored) : [];
+    const parsed = stored ? (JSON.parse(stored) as Booking[]) : [];
+    return normalizeStoredCart(parsed);
   } catch (e) {
     console.error("Failed to load cart from sessionStorage", e);
     return [];

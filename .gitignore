@@ -17,9 +17,14 @@ dist-ssr
 !.vscode/extensions.json
 .idea
 .DS_Store
+._*
+.AppleDouble
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
 .env
+
+# Local recovery backups
+_broken_backup/

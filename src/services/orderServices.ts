@@ -1,11 +1,11 @@
 import { db } from "../config/firebaseConfig";
-import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
+import { collection, addDoc, getDocs, query, where, serverTimestamp } from "firebase/firestore";
 
 export const createOrder = async (userId: string, orderData: any) => {
   const docRef = await addDoc(collection(db, "orders"), {
     userId,
     ...orderData,
-    createdAt: new Date() // ✅ timestamp
+    createdAt: serverTimestamp(),
   });
   return docRef.id;
 };

@@ -11,39 +11,65 @@ const ShoppingCart: React.FC = () => {
   const navigate = useNavigate();
 
   const cartItemsCount = cart.length;
-  const totalPrice = cart.reduce((acc, item) => acc + item.price, 0).toFixed(2);
+  const totalPrice = cart.reduce((acc, item) => acc + item.price, 0);
+  const hasItems = cartItemsCount > 0;
+  const formatCurrency = (value: number) => value.toFixed(2);
 
   return (
     <div className={styles.container}>
-      <h1>Shopping Cart</h1>
-      <p>Total Items: {cartItemsCount}</p>
+      <header className={styles.header}>
+        <h1>Shopping Cart</h1>
+        <p>{hasItems ? `${cartItemsCount} item(s) in your cart` : "Your cart is empty"}</p>
+      </header>
 
-      {cartItemsCount === 0 ? (
-        <p>Your cart is empty</p>
+      {!hasItems ? (
+        <div className={styles.emptyState}>
+          <p>Browse our services to add your first booking.</p>
+          <button className={styles.primaryButton} onClick={() => navigate("/booking")}>
+            View Services
+          </button>
+        </div>
       ) : (
-        <>
-          <ul>
+        <div className={styles.layout}>
+          <ul className={styles.list} aria-label="Cart items">
             {cart.map((item) => (
-              <li key={item.id}>
+              <li key={item.id} className={styles.item}>
                 <img src={item.imageUrl} alt={item.title} className={styles.image} />
-                <div>
+                <div className={styles.itemDetails}>
                   <h3>{item.title}</h3>
                   <p>{item.description}</p>
-                  <p>Price: ${item.price.toFixed(2)}</p>
-                  <button onClick={() => dispatch(removeFromCart(item.id))}>Remove</button>
+                  <p className={styles.price}>${formatCurrency(item.price)}</p>
+                  <button
+                    className={styles.removeButton}
+                    onClick={() => dispatch(removeFromCart(item.id))}
+                  >
+                    Remove
+                  </button>
                 </div>
               </li>
             ))}
           </ul>
 
-          <h3>Total: ${totalPrice}</h3>
-          <button className={styles.button} onClick={() => dispatch(clearCart())}>
-            Clear Cart
-          </button>
-          <button className={styles.button} onClick={() => navigate("/checkout")}>
-            Checkout
-          </button>
-        </>
+          <aside className={styles.summary}>
+            <h2>Order Summary</h2>
+            <div className={styles.summaryRow}>
+              <span>Subtotal</span>
+              <span>${formatCurrency(totalPrice)}</span>
+            </div>
+            <div className={styles.summaryRow}>
+              <span>Total</span>
+              <span>${formatCurrency(totalPrice)}</span>
+            </div>
+            <div className={styles.actions}>
+              <button className={styles.secondaryButton} onClick={() => dispatch(clearCart())}>
+                Clear Cart
+              </button>
+              <button className={styles.primaryButton} onClick={() => navigate("/checkout")}>
+                Checkout
+              </button>
+            </div>
+          </aside>
+        </div>
       )}
     </div>
   );
