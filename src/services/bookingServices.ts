@@ -12,7 +12,7 @@ export const services = [
       title: "Silver Package",
       description: "1hr photo shoot. 2 outfits. 5-8 high-quality edited images. Online gallery for download. Light retouching included, Amazing for professional headshots, business portraits, family photos, or personal branding.",
       price: 300,
-      imageUrl: "https://www.blis-spa.com/wp-content/uploads/2023/07/R.png",
+      imageUrl: "https://www.gardenretreatpa.com/wp-content/uploads/2023/07/R.png",
     },
     {
       id: 3,

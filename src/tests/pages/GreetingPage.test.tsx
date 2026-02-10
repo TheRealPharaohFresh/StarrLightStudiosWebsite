@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
-import GreetingPage from "./GreetingPage";
+import GreetingPage from "../../pages/GreetingPage";
 import { renderWithProviders } from "../test-utils";
 
 describe("GreetingPage", () => {

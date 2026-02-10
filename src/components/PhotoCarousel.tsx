@@ -6,7 +6,6 @@ import babygirls from "../assets/photos/babygirls.jpg";
 import leila from "../assets/photos/leila.jpg";
 import maryjane from "../assets/photos/maryjane.jpg";
 import neko from "../assets/photos/neko.jpg";
-import chasen from "../assets/photos/chasen.jpeg";
 
 const photos = [
   babygirls,

@@ -11,7 +11,6 @@ const NavBar: React.FC = () => {
   const cartItemsCount = useSelector((state: RootState) => selectCartItemsCount(state));
   const navigate = useNavigate();
   const user = useCurrentUser();
-  console.log("Current User:", user);
 
   return (
     <nav className={`navbar navbar-expand-lg ${styles.navbar}`}>

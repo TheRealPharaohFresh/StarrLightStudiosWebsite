@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import cartReducer, { addToCart, removeFromCart, clearCart, type Booking } from "./cartSlice";
+import cartReducer, { addToCart, removeFromCart, clearCart, type Booking } from "../../redux/cartSlice";
 
 describe("cartSlice", () => {
   const item: Booking = {

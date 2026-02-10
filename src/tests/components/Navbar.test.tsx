@@ -1,9 +1,9 @@
 import { screen } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
-import NavBar from "./Navbar";
+import NavBar from "../../components/Navbar";
 import { renderWithProviders } from "../test-utils";
 
-vi.mock("./DisplayData", () => ({
+vi.mock("../../components/DisplayData", () => ({
   useCurrentUser: () => null,
 }));
 

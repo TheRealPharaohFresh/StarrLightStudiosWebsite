@@ -1,9 +1,9 @@
 import { screen } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
-import BookingPage from "./BookingPage";
+import BookingPage from "../../pages/BookingPage";
 import { renderWithProviders } from "../test-utils";
 
-vi.mock("../services/bookingServices", () => ({
+vi.mock("../../services/bookingServices", () => ({
   services: [],
 }));
 

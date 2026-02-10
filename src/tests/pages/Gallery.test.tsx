@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
-import Gallery from "./Gallery";
+import Gallery from "../../pages/Gallery";
 import { renderWithProviders } from "../test-utils";
 
 describe("Gallery", () => {

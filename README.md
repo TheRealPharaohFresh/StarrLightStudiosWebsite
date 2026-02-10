@@ -45,30 +45,41 @@ Modular service-based architecture
 
 Firebase config via .env for safe environment switching
 
+🧪 Tests & CI
+
+Unit/UI tests use Vitest + React Testing Library and live under `src/tests/`.
+
+A GitHub Actions workflow runs tests + build and then deploys to Vercel.
+
 src/
  ┣ 📂 config/
- ┃ ┗ 📜 firebaseConfig.ts      # Firebase setup
- ┣ 📂 store/
- ┃ ┣ 📜 cartSlice.ts           # Redux slice for cart state
- ┃ ┗ 📜 store.ts               # Redux store w/ persistence
+ ┃ ┗ 📜 firebaseConfig.ts       # Firebase setup
+ ┣ 📂 redux/
+ ┃ ┣ 📜 cartSlice.ts            # Cart state + actions
+ ┃ ┗ 📜 store.ts                # Store + sessionStorage persistence
  ┣ 📂 services/
- ┃ ┣ 📜 mockData.ts            # Predefined photography packages
- ┃ ┣ 📜 orderService.ts        # Firestore order operations
- ┃ ┗ 📜 userService.ts         # User management (Firestore + Auth)
+ ┃ ┣ 📜 bookingServices.ts      # Package catalog (Bronze → Diamond)
+ ┃ ┣ 📜 orderServices.ts        # Firestore order operations
+ ┃ ┗ 📜 userServices.ts         # User management (Firestore + Auth)
  ┣ 📂 utils/
- ┃ ┗ 📜 userUtils.ts           # Ensure user doc exists
+ ┃ ┗ 📜 createUserIfNotExist.ts # Ensure user doc exists
  ┣ 📂 pages/
- ┃ ┣ 📜 GreetingPage.tsx       # Landing screen (no navbar)
- ┃ ┣ 📜 LandingPage.tsx        # Main home page
- ┃ ┣ 📜 Gallery.tsx            # Showcase gallery
- ┃ ┣ 📜 BookingPage.tsx        # Booking form
- ┃ ┣ 📜 RegisterPage.tsx       # User registration
- ┃ ┣ 📜 Login.tsx              # Login page
- ┃ ┣ 📜 CheckoutPage.tsx       # Checkout & payment flow
- ┃ ┗ 📜 ShoppingCartPage.tsx   # Cart overview
+ ┃ ┣ 📜 GreetingPage.tsx
+ ┃ ┣ 📜 LandingPage.tsx
+ ┃ ┣ 📜 Gallery.tsx
+ ┃ ┣ 📜 BookingPage.tsx
+ ┃ ┣ 📜 RegisterPage.tsx
+ ┃ ┣ 📜 Login.tsx
+ ┃ ┣ 📜 CheckoutPage.tsx
+ ┃ ┗ 📜 ShoppingCartPage.tsx
  ┣ 📂 components/
- ┃ ┗ 📜 Navbar.tsx             # Top navigation bar
- ┗ 📜 App.tsx                  # Routing & app entry
+ ┃ ┗ 📜 Navbar.tsx
+ ┣ 📂 tests/
+ ┃ ┣ 📂 pages/                 # Page tests
+ ┃ ┣ 📂 components/            # Component tests
+ ┃ ┣ 📂 redux/                 # Slice/store tests
+ ┃ ┗ 📜 setupTests.ts          # Test setup (jest-dom, cleanup)
+ ┗ 📜 App.tsx                   # Routing & app entry
 
 | Package    | Duration | Images | Outfits | Best For               |
 | ---------- | -------- | ------ | ------- | ---------------------- |
@@ -111,3 +122,11 @@ State Management: Redux Toolkit
 Backend: Firebase (Firestore + Auth)
 
 Persistence: sessionStorage (for cart state)
+
+🧰 Local Dev
+
+- `npm install`
+- `npm run dev`
+- `npm test`
+- `npm run build`
+- `npm run typecheck`

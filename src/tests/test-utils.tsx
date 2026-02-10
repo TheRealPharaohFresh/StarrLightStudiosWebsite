@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { MemoryRouter } from "react-router-dom";
-import cartReducer, { type Booking } from "./redux/cartSlice";
+import cartReducer, { type Booking } from "../redux/cartSlice";
 
 interface RenderOptions {
   preloadedState?: { cart: { items: Booking[] } };

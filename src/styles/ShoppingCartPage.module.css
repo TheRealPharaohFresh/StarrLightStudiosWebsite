@@ -197,4 +197,24 @@
     width: 100%;
   }
 }
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1.25rem 1rem;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .layout {
+    gap: 1.25rem;
+  }
+
+  .summary {
+    padding: 1rem;
+  }
+
+  .removeButton {
+    width: 100%;
+  }
+}
   

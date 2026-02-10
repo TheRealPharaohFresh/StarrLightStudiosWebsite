@@ -185,6 +185,13 @@ button[type="submit"]:disabled {
 }
 
 @media (max-width: 600px) {
+  .container {
+    margin: 0;
+    padding: 1.25rem 1rem;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
   .item {
     flex-direction: column;
     align-items: flex-start;
@@ -199,6 +206,10 @@ button[type="submit"]:disabled {
   .form {
     max-width: 100%;
     padding: 0 1rem;
+  }
+
+  button[type="submit"] {
+    width: 100%;
   }
 }
   
