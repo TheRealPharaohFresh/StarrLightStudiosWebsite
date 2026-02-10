@@ -2,6 +2,7 @@ import { Card, Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import styles from '../styles/BookingCard.module.css';
 import { addToCart } from '../redux/cartSlice';
+import { openCartDrawer } from '../utils/cartDrawerEvents';
 
 interface BookingCardProps {
     id: string; // Changed from number to string
@@ -16,6 +17,7 @@ const BookingCard: React.FC<BookingCardProps> = ({ id, title, description, price
 
     const handleAddToCart = () => {
         dispatch(addToCart({ id , title, description, price, imageUrl }));
+        openCartDrawer();
     }; // Added closing brace
 
     return (

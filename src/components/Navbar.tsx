@@ -8,12 +8,20 @@ import { useSelector } from "react-redux";
 import type { RootState } from "../redux/store";
 import { useState } from "react";
 import CartDrawer from "./CartDrawer";
+import { useEffect } from "react";
+import { CART_DRAWER_OPEN_EVENT } from "../utils/cartDrawerEvents";
 
 const NavBar: React.FC = () => {
   const cartItemsCount = useSelector((state: RootState) => selectCartItemsCount(state));
   const navigate = useNavigate();
   const user = useCurrentUser();
   const [isCartOpen, setIsCartOpen] = useState(false);
+
+  useEffect(() => {
+    const onOpen = () => setIsCartOpen(true);
+    window.addEventListener(CART_DRAWER_OPEN_EVENT, onOpen);
+    return () => window.removeEventListener(CART_DRAWER_OPEN_EVENT, onOpen);
+  }, []);
 
   return (
     <>
