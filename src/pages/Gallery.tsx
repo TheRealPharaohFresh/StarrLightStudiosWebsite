@@ -131,7 +131,7 @@ const Gallery: React.FC = () => {
                   }}
                   style={{
                     objectFit: "cover",
-                    height: "325px",
+                    height: "clamp(180px, 45vw, 325px)",
                     width: "100%",
                     borderRadius: "12px",
                     transition: "transform 0.3s ease, box-shadow 0.3s ease",

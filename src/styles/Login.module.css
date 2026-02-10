@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+  min-height: 100svh;
     padding: 1rem;
     background: linear-gradient(135deg, #f5f3e7, #b497d6);
   }
@@ -13,12 +13,13 @@
     backdrop-filter: blur(20px);
     border-radius: 20px;
     padding: 3rem 2.5rem;
-    height: 500px;
+    max-height: 90svh;
     width: 100%;
     max-width: 500px; /* Bigger than before */
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
     color: #f5f3e7;
     animation: fadeIn 0.8s ease;
+    overflow: auto;
   }
   
   .loginWrapper .container h2 {
@@ -76,21 +77,51 @@
     background: rgba(255, 255, 255, 0.2);
   }
   
-  .loginWrapper .container .form-footer {
+  .formFooter {
     text-align: center;
     margin-top: 1.2rem;
     font-size: 0.85rem;
     color: #f5f3e7;
   }
   
-  .loginWrapper .container .form-footer a {
+  .formFooter a {
     color: #f5f3e7;
     text-decoration: none;
     transition: color 0.3s ease;
   }
   
-  .loginWrapper .container .form-footer a:hover {
+  .formFooter a:hover {
     color: #4e44ce;
+  }
+
+  .error {
+    margin: 0.75rem 0 0;
+    color: #b91c1c;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    .loginWrapper {
+      padding: 0.75rem;
+    }
+
+    .loginWrapper .container {
+      padding: 1.75rem 1.25rem;
+      border-radius: 16px;
+    }
+
+    .loginWrapper .container h2 {
+      font-size: 1.6rem;
+    }
+
+    .loginWrapper .container .buttonRow {
+      flex-direction: column;
+    }
+
+    .loginWrapper .container .button {
+      margin-bottom: 0;
+    }
   }
   
   @keyframes fadeIn {

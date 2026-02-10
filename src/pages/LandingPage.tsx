@@ -51,7 +51,7 @@ const LandingPage: React.FC = () => {
       {/* Toast Notification Centered */}
       {showToast && (
         <div
-          className="toast-container position-fixed top-50  p-3"
+          className="toast-container position-fixed top-50 start-50 translate-middle p-3"
           style={{ zIndex: 9999 }}
         >
           <div
@@ -88,7 +88,6 @@ const LandingPage: React.FC = () => {
             style={{
               padding: "20px",
               background: "linear-gradient(to right, #f5f3e7, #b497d6)",
-              height: "400px",
             }}
           >
             <h1
@@ -126,7 +125,7 @@ const LandingPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="col-6 col-md-4 p-0">
+        <div className="col-12 col-md-4 p-0">
           <img
             className="img-fluid w-100 h-100"
             src={leila}
@@ -166,13 +165,15 @@ const LandingPage: React.FC = () => {
         </p>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <button
+            type="button"
+            className="btn btn-lg"
             style={{
-              outline: "none",
-              border: "none",
-              backgroundColor: "transparent",
-              padding: "0",
+              backgroundColor: "#b497d6",
+              color: "#fff",
+              fontFamily: "'Playfair Display', serif",
               transition: "transform 0.2s, box-shadow 0.2s",
               borderRadius: "8px",
+              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.1)",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = "scale(1.05)";
@@ -184,19 +185,9 @@ const LandingPage: React.FC = () => {
               e.currentTarget.style.boxShadow =
                 "0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.1)";
             }}
+            onClick={handleGalleryClick}
           >
-            <a
-              href="/gallery"
-              className="btn btn-lg"
-              style={{
-                backgroundColor: "#b497d6",
-                color: "#fff",
-                fontFamily: "'Playfair Display', serif",
-              }}
-              onClick={handleGalleryClick}
-            >
-              Explore Gallery
-            </a>
+            Explore Gallery
           </button>
         </div>
       </div>
@@ -210,13 +201,7 @@ const LandingPage: React.FC = () => {
           padding: "20px",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row-reverse",
-            alignItems: "center",
-          }}
-        >
+        <div className="d-flex flex-column flex-md-row-reverse align-items-center">
           {/* Text Section */}
           <div style={{ flex: 1, padding: "20px" }}>
             <h2

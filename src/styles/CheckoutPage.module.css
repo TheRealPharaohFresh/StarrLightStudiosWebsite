@@ -128,7 +128,7 @@
   box-shadow: 0 0 5px rgba(142, 68, 173, 0.4);
 }
 
-button[type="submit"] {
+.form button[type="submit"] {
   margin-top: 0.5rem;
   background-color: #8e44ad;
   color: white;
@@ -142,12 +142,12 @@ button[type="submit"] {
   box-shadow: 0 4px 12px rgba(142, 68, 173, 0.3);
 }
 
-button[type="submit"]:hover:enabled {
+.form button[type="submit"]:hover:enabled {
   background-color: #732d91;
   box-shadow: 0 6px 18px rgba(115, 45, 145, 0.5);
 }
 
-button[type="submit"]:disabled {
+.form button[type="submit"]:disabled {
   background-color: #c4a6d1;
   cursor: not-allowed;
   box-shadow: none;
@@ -208,7 +208,7 @@ button[type="submit"]:disabled {
     padding: 0 1rem;
   }
 
-  button[type="submit"] {
+  .form button[type="submit"] {
     width: 100%;
   }
 }

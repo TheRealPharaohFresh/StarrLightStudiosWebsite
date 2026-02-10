@@ -3,11 +3,13 @@
     color: #fff; /* White text color */
     margin: 0;
     padding: 0;
-    height: 100vh; /* Full viewport height */
+  min-height: 100svh; /* Full viewport height (mobile-safe) */
     display: flex;
     justify-content: center;
     align-items: center; /* Center content */
     font-family: "Playfair Display", serif; /* Elegant serif font */
+  text-align: center;
+  padding: 1.25rem;
 }
 
 
@@ -16,6 +18,8 @@
     color: #fff; /* Ensure text is white */
     -webkit-animation: text-flicker-in-glow 4s linear both;
     animation: text-flicker-in-glow 4s linear both;
+  font-size: clamp(1.6rem, 6vw, 3rem);
+  line-height: 1.15;
 }
 
 
